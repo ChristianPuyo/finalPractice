@@ -9,7 +9,7 @@ server.use(cors())
 server.use(morgan('dev'))
 server.use(express.json())//convierte la info en un objeto de js
 
-
+server.use(router)
 
 
 

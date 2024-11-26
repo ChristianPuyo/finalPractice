@@ -3,18 +3,18 @@ const sequelize = require('../db')
 
 const Student = sequelize.define('Student',{
     id:{
-        type: DataTypes.integger,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true   
     },
     firstName: {
-        type: DataTypes.strings,
+        type: DataTypes.STRING,
         allowNull:false
     },
     lastName: {
-        type: DataTypes.strings,
+        type: DataTypes.STRING,
         allowNull: false
     }
 })
 
-module.exports = student
+module.exports = Student
