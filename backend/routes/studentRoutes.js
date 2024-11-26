@@ -1,63 +1,59 @@
-const { Router } = require('express')
-const {createStudentController,
-       getAllStudentsController,
-       updateStudentByIdController,
-       deleteStudentByIdController
+const {Router} = require('express')
 
-} = require('../controllers/studentControllers')
+const {createStudentController,getAllStudentsController,updatedStudentByIdController,deletedStudentByIdController} = require('../controlles/studentControllers')
+const Student = require('../models/Student')
 
 const studentRouter = Router()
 
-//Create new student 
-studentRouter.post("/", async(req, res)=>{
-    const {id, firstName, lastName} = req.body
-    try {
-        const newStudent = await createStudentController({id, firstName, lastName})
-        res.status(201).json(newStudent)
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
-}) 
-
-//Get all students
-studentRouter.get("/", async(req, res)=>{
-    try {
-        const students =  await getAllStudentsController()
-        res.status(200).json(students)
-
-    } catch (error) {
-        res.status(400).json({error: error.message})
-    }
+//create new student
+studentRouter.post("/",async(req,res)=>{
+    const {id, nombre, telefono,correo} = req.body
+        try {
+            const newStudent = await createStudentController({id, nombre, telefono,correo})
+            res.status(201).json(newStudent)
+        } catch (error) {
+            res.status(400).json({error: error.message})
+        }
+    
 })
-//Update student by id
+
+//agrega todos los estudiantes
+
+studentRouter.get("/", async(req,res)=>{
+    try {
+        const students = await getAllStudentsController()
+        res.status(200).json(students)
+    } catch (error) {
+            res.status(400).json({error: error.message})
+            }
+})
+
+//actualizamos los estudiantes por id
 studentRouter.put("/:id", async(req, res)=>{
     const {id} = req.params
     const studentData = req.body
     try {
-        const  updatedStudent = await updateStudentByIdController(id, studentData)
+        const updatedStudent = await updatedStudentByIdController(id, studentData)
         if(!updatedStudent){
             return res.status(404).json({error: "Student not found"})
-        }
+        }                                
         res.status(200).json(updatedStudent)
-
-    } catch (error) {
+    }catch(error){
         res.status(400).json({error: error.message})
-    }
+    }    
 })
-//Delete student by id
+
 studentRouter.delete("/:id", async(req, res)=>{
     const {id} = req.params
     try {
-        const deletedStudent = await  deleteStudentByIdController(id)
+        const deletedStudent = await deletedStudentByIdController(id)
         if(!deletedStudent){
-            return res.status(404).json({error: "Student not found"})
-        }
-        res.status(200).json({message: "Student deleted successfully"})
-
-    } catch (error) {
-        res.status(500).json({error: error.message})
-    }
-
+            return res.status.apply(404).json({error: "Student not found"})
+            }
+            res.status(200).json({message: "Student deleted successfully"})
+            }catch(error){
+                res.status(500).json({error: error.message})
+                }
 })
 
 module.exports={

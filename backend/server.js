@@ -1,17 +1,17 @@
-const express = require('express');
+const express = require('express')
 const router = require('./routes/index')
 const cors = require('cors')
-const morgan =  require('morgan')
+const morgan = require('morgan')
 
 
-const server = express() 
+
+const server = express()
+// traformamos de objetos json
 server.use(cors())
 server.use(morgan('dev'))
-server.use(express.json())//convierte la info en un objeto de js
+server.use(express.json())// convierte un objeto de json
+
+server.use(router)
 
 
-
-
-
-module.exports = server
-
+module.exports=server
