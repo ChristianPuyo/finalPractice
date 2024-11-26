@@ -6,7 +6,7 @@ const useStudentStore = create((set)=>({
     addStudent: async(student)=>{
         try {
             const response = await axios.post('http://localhost:3001/student', student)
-            set((state)=>({students: [...state.students, response.data]}))
+            set((state)=>({students: [...state.students, response.data]})) 
         } catch (error) {
             console.log("Error adding user", error.message);
             
