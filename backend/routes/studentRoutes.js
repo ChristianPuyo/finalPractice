@@ -8,7 +8,7 @@ const {createStudentController,
 
 const studentRouter = Router()
 
-//Create new student 
+
 studentRouter.post("/", async(req, res)=>{
     const {id, firstName, lastName} = req.body
     try {
@@ -19,7 +19,7 @@ studentRouter.post("/", async(req, res)=>{
     }
 }) 
 
-//Get all students
+
 studentRouter.get("/", async(req, res)=>{
     try {
         const students =  await getAllStudentsController()
@@ -29,7 +29,7 @@ studentRouter.get("/", async(req, res)=>{
         res.status(400).json({error: error.message})
     }
 })
-//Update student by id
+
 studentRouter.put("/:id", async(req, res)=>{
     const {id} = req.params
     const studentData = req.body
@@ -44,7 +44,7 @@ studentRouter.put("/:id", async(req, res)=>{
         res.status(400).json({error: error.message})
     }
 })
-//Delete student by id
+
 studentRouter.delete("/:id", async(req, res)=>{
     const {id} = req.params
     try {
