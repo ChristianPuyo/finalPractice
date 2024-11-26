@@ -1,0 +1,73 @@
+/* Cambia el color de fondo general */
+.contactos-container {
+    padding: 20px;
+    background-color: #f0f0f0; /* Fondo gris claro */
+    color: #333333; /* Color de texto principal */
+    font-family: Arial, sans-serif; /* Cambia la fuente */
+  }
+  
+  .contactos-container h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #2c3e50; /* Color para el título */
+  }
+  
+  .contactos-container ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .contactos-container li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff; /* Fondo blanco para cada elemento */
+    color: #2c3e50; /* Color de texto para cada contacto */
+  }
+  
+  .contactos-container li:hover {
+    background-color: #ecf0f1; /* Color al pasar el ratón sobre cada elemento */
+  }
+  
+  .contactos-container button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    background-color: #3498db; /* Color del botón */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .contactos-container button:hover {
+    background-color: #2980b9; /* Color del botón al pasar el ratón */
+  }
+  
+  .editar-contacto {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border: 1px solid #ddd;
+  }
+  
+  .editar-contacto input {
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .editar-contacto button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+  
+  .editar-contacto button:hover {
+    background-color: #45a049;
+  }
+  
