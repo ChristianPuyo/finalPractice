@@ -1,12 +1,13 @@
 const server = require('./server')
 const db = require('./models/index')
 
-db.sequelize({alter: true})
+db.sequelize.sync({alter: true})
   .then(()=>{
-    server.listen(3001, ()=>{
-        console.log('Server listening on port 3001'); 
+    server.listen(3009, ()=>{
+        console.log('Server listening on port 3009'); 
         
     })
   })
   .catch(err=> console.log('Error al sincronizar Base de datos',err.message))
+
 
