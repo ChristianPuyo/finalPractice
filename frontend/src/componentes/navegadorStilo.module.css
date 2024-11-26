@@ -1,15 +1,14 @@
-/* navegadorStilo.module.css */
 
 body {
     margin: 0;
-    padding-top: 80px; /* Ajusta según la altura del nav */
+    padding-top: 80px; 
     font-family: Arial, sans-serif;
 }
 
 nav {
     display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
+    justify-content: center; 
+    align-items: center; 
     background-color: #1a1a1a;
     padding: 1rem 2rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -26,17 +25,17 @@ nav a {
     font-size: 1.2rem;
     margin: 0 1rem;
     transition: color 0.3s;
-    text-align: center; /* Asegura el texto centrado en los enlaces */
+    text-align: center; 
 }
 
 nav a:hover {
-    color: #4CAF50; /* Cambia a un color verde al pasar el ratón */
+    color: #4CAF50;
 }
 
 @media (max-width: 768px) {
     nav {
-        flex-direction: column; /* Ajusta para pantallas pequeñas */
-        align-items: center; /* Centra en pantallas pequeñas */
+        flex-direction: column; 
+        align-items: center; 
         padding: 1rem;
     }
 
