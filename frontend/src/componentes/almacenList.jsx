@@ -25,7 +25,7 @@ const AlmacenList = () => {
             fetchCourses(); // Refresca 
         }
     };
-s
+
     const handleEditClick = (course) => {
         setEditingCourse(course);
         setFormData({ idProducto: course.idProducto, fechaIngreso: course.fechaIngreso, cantidad: course.cantidad })
