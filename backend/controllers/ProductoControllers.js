@@ -2,7 +2,7 @@ const Producto = require('../models/Producto')
 
 const createProductoController =  async ({id, nombre, precio, cantidad, categoria}) => {
     try {
-        const newProducto = await Producto.Create({id, nombre, precio, cantidad, categoria})
+        const newProducto = await Producto.create({id, nombre, precio, cantidad, categoria})
         return newProducto
        
     } catch (error) {
@@ -13,7 +13,7 @@ const createProductoController =  async ({id, nombre, precio, cantidad, categori
 //get all Productos
 const getAllProductosController = async () => {
     try {
-        const productos =  await Producto.getAll()
+        const productos =  await Producto.findAll()
         return productos
     } catch (error) {
         throw new Error(error.message)
@@ -23,7 +23,7 @@ const getAllProductosController = async () => {
 
 const updateProductoByIdController  = async (id, productoData) => {
     try {
-        const producto = await Producto.findByPK(id)
+        const producto = await Producto.findByPk(id)
         if(!producto) {
             return null
         }
@@ -38,11 +38,11 @@ const updateProductoByIdController  = async (id, productoData) => {
 
 const deleteProductoByIdController = async(id)=>{
     try {
-        const deleteProducto = await Producto.findByPK(id)
+        const deleteProducto = await Producto.findByPk(id)
         if(!deleteProducto) {
             return null
         }
-        await  deleteProducto.Destroy()
+        await  deleteProducto.destroy()
         return deleteProducto
 
     } catch (error) {
