@@ -1,9 +1,9 @@
 const Student = require('../models/Student')
 
-const createStudentController =  async ({id, firstName, lastName}) => {
+const createStudentController =  async ({id, nombre,tel,email}) => {
     try {
-        const newStudent = await Student.Create({lastName})
-       
+        const newStudent = await Student.create({id, nombre,tel,email})
+        return newStudent
     } catch (error) {
         throw new Error(error.message)
     }
@@ -12,8 +12,8 @@ const createStudentController =  async ({id, firstName, lastName}) => {
 //get all students
 const getAllStudentsController = async () => {
     try {
-        const students =  await Student.getAll()
-      
+        const students =  await Student.findAll()
+        return students
 
     } catch (error) {
         throw new Error(error.message)
@@ -23,7 +23,7 @@ const getAllStudentsController = async () => {
 
 const updateStudentByIdController  = async (id, studentData) => {
     try {
-        const student = await Student.findByPK(id)
+        const student = await Student.findByPk(id)
         if(!student) {
             return null
         }
@@ -38,11 +38,11 @@ const updateStudentByIdController  = async (id, studentData) => {
 
 const deleteStudentByIdController = async(id)=>{
     try {
-        const student = await Student.findByPK(id)
+        const student = await Student.findByPk(id)
         if(!student) {
             return null
         }
-        await  student.Destroy()
+        await  student.destroy()
         return student
 
     } catch (error) {

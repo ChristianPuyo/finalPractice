@@ -1,7 +1,7 @@
 const server = require('./server')
 const db = require('./models/index')
 
-db.sequelize({alter: true})
+db.sequelize.sync({alter: true})
   .then(()=>{
     server.listen(3001, ()=>{
         console.log('Server listening on port 3001'); 
