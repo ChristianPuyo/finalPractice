@@ -12,7 +12,7 @@ const Student = sequelize.define('Student',{
         allowNull:false
     },
     numero: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false
     },
     correo: {
