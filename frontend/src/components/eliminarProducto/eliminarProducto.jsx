@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import styles from "./eliminarProducto.module.css"; // Cambié el nombre del archivo a 'eliminarProducto'
 import { useNavigate } from "react-router-dom";
 import useProductStore from "../../store/productoStore";
+
 const EliminarProducto = () => {
   const [codigo, setCodigo] = useState("");  // Cambié el estado a 'codigo' para identificar el producto
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
-  const { deleteProduct } = useProductStore();  // Usamos el store de productos
+  const { deleteProductByCode } = useProductStore();  // Usamos el store de productos
 
   const volverAinicio = () => {
     navigate("/");  // Regresa a la página de inicio
@@ -23,17 +24,18 @@ const EliminarProducto = () => {
   };
 
   const confirmarEliminacion = async () => {
-    const deleted = await deleteProduct(codigo); // Usamos el código directamente en la eliminación
-
+    const deleted = await deleteProductByCode(codigo); // Ahora retorna true o false
+  
     if (deleted) {
       alert("Producto Eliminado");
       setCodigo(""); // Limpiamos el campo código
     } else {
       alert("No se encontró el producto o error al eliminar.");
     }
-
+  
     setIsModalOpen(false); // Cerrar el modal después de la eliminación
   };
+  
 
   const cancelarEliminacion = () => {
     setIsModalOpen(false); // Cerrar el modal sin eliminar

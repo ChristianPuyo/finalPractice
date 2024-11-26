@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ProductList = () => {
   const navigate = useNavigate();
-  const { fetchProducts, products, deleteProduct } = useProductStore();  // Accedemos a los métodos y estados de productos
+  const { fetchProducts, products, deleteProductByCode } = useProductStore();  // Accedemos a los métodos y estados de productos
 
   // Navegar al inicio
   const volverAInicio = () => {
@@ -18,9 +18,9 @@ const ProductList = () => {
   }, []);
 
   // Manejo de eliminación de producto
-  const handleDelete = (id) => {
+  const handleDelete = (codigo) => {
     if (window.confirm("¿Estás seguro de que quieres eliminar este producto?")) {
-      deleteProduct(id);  // Eliminamos el producto por ID
+      deleteProductByCode(codigo);  // Eliminamos el producto por Código
     }
   };
 
@@ -32,7 +32,7 @@ const ProductList = () => {
         <table className={styles.productTable}>
           <thead>
             <tr>
-              <th>ID</th>
+              <th>Código</th> {/* Cambié ID por Código */}
               <th>Nombre</th>
               <th>Precio</th>
               <th>Categoría</th>
@@ -41,13 +41,13 @@ const ProductList = () => {
           </thead>
           <tbody>
             {products.map((product) => (
-              <tr key={product.id}>
-                <td>{product.id}</td>  {/* Mostrar el ID del producto */}
+              <tr key={product.codigo}> {/* Cambié el key por 'codigo' */}
+                <td>{product.codigo}</td>  {/* Mostrar el Código del producto */}
                 <td>{product.name}</td>  {/* Mostrar el nombre del producto */}
                 <td>{product.price}</td>  {/* Mostrar el precio del producto */}
                 <td>{product.category}</td>  {/* Mostrar la categoría del producto */}
                 <td>
-                  <button onClick={() => handleDelete(product.id)} className={styles.deleteButton}>
+                  <button onClick={() => handleDelete(product.codigo)} className={styles.deleteButton}> {/* Pasamos el 'codigo' a la función de eliminación */}
                     Eliminar
                   </button>
                 </td>

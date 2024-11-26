@@ -45,18 +45,21 @@ updateProductByCode: async (codigo, updatedData) => {
     }
 },
 
-    // Eliminar un producto por código
-    deleteProductByCode: async (codigo) => {
-        try {
-            const response = await axios.delete(`http://localhost:3001/producto/${codigo}`);
-            console.log("Producto eliminado:", response.data);
-            set((state) => ({
-                products: state.products.filter((product) => product.codigo !== codigo),
-            }));
-        } catch (error) {
-            console.error("Error al eliminar el producto:", error.message);
-        }
-    },
+   // Eliminar un producto por código
+deleteProductByCode: async (codigo) => {
+    try {
+      const response = await axios.delete(`http://localhost:3001/producto/${codigo}`);
+      console.log("Producto eliminado:", response.data);
+      set((state) => ({
+        products: state.products.filter((product) => product.codigo !== codigo),
+      }));
+      return true;  // Devuelve true si la eliminación fue exitosa
+    } catch (error) {
+      console.error("Error al eliminar el producto:", error.message);
+      return false; // Devuelve false si hubo un error
+    }
+  },
+  
 }));
 
 export default useProductStore;
