@@ -1,16 +1,13 @@
-const {Router} = require('express')
-const {studentRouter} = require('../routes/studentRoutes')
-const {userRouter} = require('../routes/userRoutes')
-const queryStudentsUsers = require('./queryStudentsUsersRoutes')
+const { Router } = require('express');
 
-const router  = Router()
+const productoRouter= require('./productoRoutes')
+// Importa el nuevo enrutador de roles// Asegúrate de que esta ruta sea correcta
 
-router.use('/student',studentRouter)
-router.use('/user',userRouter)
-router.use('/studentsusers', queryStudentsUsers)
-//router.use('/course', courseRoter)
-//router.use('/teacher', teacherRouter)
-//router.use('/exam', examRouter)
+const router = Router();
+
+// Usa el courseRouter bajo el prefijo '/courses'
+
+router.use('/productos', productoRouter);
 
 
 module.exports = router;

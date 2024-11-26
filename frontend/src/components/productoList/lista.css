@@ -1,0 +1,102 @@
+/* Estilos generales */
+.lista {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+/* Estilo del campo de búsqueda */
+.search-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+/* Estilos de la tabla */
+.product-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.product-table th,
+.product-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+.product-table th {
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+.product-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Color alternativo para filas */
+}
+
+.product-table tr:hover {
+    background-color: #f1f1f1; /* Color al pasar el mouse */
+}
+
+/* Estilos de los iconos */
+.edit-ico,
+.delete-ico {
+    cursor: pointer;
+    margin-left: 10px;
+    font-size: 20px; /* Tamaño de los iconos */
+}
+
+/* Estilos del modal de eliminación */
+.modal-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contend {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.btns {
+    margin-top: 20px;
+}
+
+.btn-SI,
+.btn-NO {
+    padding: 10px 15px;
+    margin: 0 5px; /* Espaciado entre botones */
+    border-radius: 5px;
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambia el cursor al pasar el mouse */
+}
+
+.btn-SI {
+    background-color: #28a745; /* Verde para confirmar */
+    color: white; /* Texto blanco */
+}
+
+.btn-NO {
+    background-color: #dc3545; /* Rojo para cancelar */
+    color: white; /* Texto blanco */
+}
+
+.btn-SI:hover,
+.btn-NO:hover {
+    opacity: 0.8; /* Efecto hover */
+}
