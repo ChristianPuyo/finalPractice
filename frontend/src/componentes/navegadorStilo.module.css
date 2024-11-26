@@ -1,0 +1,47 @@
+/* navegadorStilo.module.css */
+
+body {
+    margin: 0;
+    padding-top: 80px; /* Ajusta según la altura del nav */
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    background-color: #1a1a1a;
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    transition: color 0.3s;
+    text-align: center; /* Asegura el texto centrado en los enlaces */
+}
+
+nav a:hover {
+    color: #4CAF50; /* Cambia a un color verde al pasar el ratón */
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Ajusta para pantallas pequeñas */
+        align-items: center; /* Centra en pantallas pequeñas */
+        padding: 1rem;
+    }
+
+    nav a {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+    }
+}
