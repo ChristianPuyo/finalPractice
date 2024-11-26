@@ -1,11 +1,14 @@
 const sequelize = require('../db')
+const Contacto = require('./Contacto')
 
 //Importar modelos
-const Student = require('./Student') 
+// const Student = require('./Contacto') 
 
 const db ={
     sequelize,
-    Student,
+    // Student,
+    Contacto,
+    
 
 }
 
