@@ -10,9 +10,9 @@ const studentRouter = Router()
 
 //Create new student 
 studentRouter.post("/", async(req, res)=>{
-    const {id, firstName, lastName} = req.body
+    const {Nombre, Numero_telefono, Correo} = req.body
     try {
-        const newStudent = await createStudentController({id, firstName, lastName})
+        const newStudent = await createStudentController({Nombre, Numero_telefono, Correo})
         res.status(201).json(newStudent)
     } catch (error) {
         res.status(400).json({error: error.message})
