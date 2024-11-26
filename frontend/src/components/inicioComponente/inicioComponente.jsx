@@ -28,7 +28,7 @@ const InicioComponente = () => {
           Agregar Producto
         </button>
         <button className={style.button} onClick={iraEdit}>
-          Editar Producto
+          Editar Producto -NO FUNCIONA
         </button>
         <button className={style.button} onClick={eliminarUsuario}>
           Eliminar Producto

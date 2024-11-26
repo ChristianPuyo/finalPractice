@@ -1,25 +1,25 @@
 import { useState } from "react";
-import useProductStore from '../../store/productoStore';
+import useProductStore from "../../store/productoStore";
 import { useNavigate } from "react-router-dom";
-import styles from "./editProductoForm.module.css"; // Cambié el nombre del archivo a 'editProductoForm'
-import Modal from "../modal/modal"; 
+import styles from "./editProductoForm.module.css";
+import Modal from "../modal/modal";
 
 const EditProductoForm = () => {
   const navigate = useNavigate();
-  const { updateProductByCode, getProductByCodigo } = useProductStore(); // Usamos las funciones para productos
+  const { updateProductByCode, getProductByCodigo } = useProductStore();
 
   const [productData, setProductData] = useState({
     codigo: "",
     nombre: "",
     descripcion: "",
     precio: "",
-    stock: ""
+    stock: "",
   });
 
   const [modalOpen, setModalOpen] = useState(false);
 
   const volverAInicio = () => {
-    navigate("/"); // Regresar a la página de inicio
+    navigate("/");
   };
 
   const handleInputChange = (e) => {
@@ -27,11 +27,10 @@ const EditProductoForm = () => {
     setProductData({ ...productData, [name]: value });
   };
 
-  // Manejar el evento de presionar Enter en el campo código
   const handleCodigoKeyPress = (e) => {
     if (e.key === "Enter") {
       if (productData.codigo) {
-        fetchProductData(productData.codigo); // Buscar producto solo cuando el código no esté vacío
+        fetchProductData(productData.codigo);
       }
     }
   };
@@ -47,21 +46,26 @@ const EditProductoForm = () => {
     });
   };
 
-  // Función para obtener los datos del producto por código
   const fetchProductData = async (codigo) => {
     try {
-      const product = await getProductByCodigo(codigo); // Obtener el producto por su código
+      const product = await getProductByCodigo(codigo);
       if (product) {
         setProductData({
           codigo: product.codigo,
           nombre: product.nombre,
           descripcion: product.descripcion,
           precio: product.precio,
-          stock: product.stock
+          stock: product.stock,
         });
       } else {
         alert("Producto no encontrado");
-        setProductData({ codigo: "", nombre: "", descripcion: "", precio: "", stock: "" }); // Limpiar los campos si no se encuentra el producto
+        setProductData({
+          codigo: "",
+          nombre: "",
+          descripcion: "",
+          precio: "",
+          stock: "",
+        });
       }
     } catch (error) {
       console.error("Error al buscar el producto:", error);
@@ -72,18 +76,23 @@ const EditProductoForm = () => {
   const handleSubmitUpdate = async (e) => {
     e.preventDefault();
     const codigoValue = productData.codigo;
-    if (codigoValue && productData.nombre && productData.descripcion && productData.precio && productData.stock) {
-        const update = await updateProductByCode(codigoValue, productData); // Cambiar aquí a 'updateProductByCode'
-        if (update) {
-            setModalOpen(true);
-        } else {
-            alert("Hubo un error al actualizar el producto");
-        }
+    if (
+      codigoValue &&
+      productData.nombre &&
+      productData.descripcion &&
+      productData.precio &&
+      productData.stock
+    ) {
+      const update = await updateProductByCode(codigoValue, productData);
+      if (update) {
+        setModalOpen(true);
+      } else {
+        alert("Hubo un error al actualizar el producto");
+      }
     } else {
-        alert("Por favor complete todos los campos.");
+      alert("Por favor complete todos los campos.");
     }
   };
-  
 
   return (
     <div className={styles.container}>
@@ -100,8 +109,8 @@ const EditProductoForm = () => {
             placeholder="Enter código"
             name="codigo"
             value={productData.codigo}
-            onChange={handleCodigoChange} // Actualizamos el código cuando cambia
-            onKeyPress={handleCodigoKeyPress} // Ejecutamos la búsqueda cuando presionamos Enter
+            onChange={handleCodigoChange}
+            onKeyPress={handleCodigoKeyPress}
             className={styles.input}
           />
         </label>
@@ -116,7 +125,7 @@ const EditProductoForm = () => {
             value={productData.nombre}
             onChange={handleInputChange}
             className={styles.input}
-            disabled={!productData.codigo} // Deshabilitar el campo si no hay un código
+            disabled={!productData.codigo}
           />
         </label>
 
@@ -130,7 +139,7 @@ const EditProductoForm = () => {
             value={productData.descripcion}
             onChange={handleInputChange}
             className={styles.input}
-            disabled={!productData.codigo} // Deshabilitar el campo si no hay un código
+            disabled={!productData.codigo}
           />
         </label>
 
@@ -144,7 +153,7 @@ const EditProductoForm = () => {
             value={productData.precio}
             onChange={handleInputChange}
             className={styles.input}
-            disabled={!productData.codigo} // Deshabilitar el campo si no hay un código
+            disabled={!productData.codigo}
           />
         </label>
 
@@ -158,17 +167,16 @@ const EditProductoForm = () => {
             value={productData.stock}
             onChange={handleInputChange}
             className={styles.input}
-            disabled={!productData.codigo} // Deshabilitar el campo si no hay un código
+            disabled={!productData.codigo}
           />
         </label>
 
         <button className={styles.submitButton}>Actualizar</button>
       </form>
 
-      {/* Modal de éxito */}
       <Modal
         isOpen={modalOpen}
-        onClose={() => setModalOpen(false)} 
+        onClose={() => setModalOpen(false)}
         title="Éxito"
         message="Producto actualizado con éxito."
       />
